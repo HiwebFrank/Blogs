@@ -1,4 +1,4 @@
-# 物联网平台概览 - Amazon, Microsoft, IBM IoT 解决方案概述
+## 物联网平台概览 - Amazon, Microsoft, IBM IoT 解决方案概述
   
 >最近研究了一些物联网平台技术资料，以做选型参考。脑子里积累大量信息，便想写出来做一些普及。作为科普文章，力争通俗易懂，不确保概念严谨性。我会给考据癖者提供相关英文链接，以便深入研究。  
 >>>>        —— 冯立超 HiwebFrank
@@ -15,7 +15,7 @@
 5. 安全  
 6. 案例与参考文档  
 
-# 1. 概  览
+## 1. 概  览
 亚马逊、微软、IBM等都给出了物联网解决方案概念构架，下面暂以亚马逊物联网解决方案概念构架为例，做简要说明。  
 亚马逊给出的物联网解决方案体系构架图如下：  
 ![亚马逊物联网解决方按构架](https://d0.awsstatic.com/IoT/assets/awsiot_how_it_works_diagram.png)    
@@ -24,7 +24,7 @@
 >设备利用本身的功能或软件开发包SDK进行定制开发，连接到物联网系统中；为确保安全，设备需要验证、授权、注册等措施；一些不能直接接入的设备则需要通过设备网关接入；在云平台中，通过设备状态数据缓存机制，保存设备最新状态等信息，从而应用程序或其他设备可以读取设备消息并与设备交互；通过规则引擎，构建物联网应用程序，这些程序将收集、处理、分析设备数据并执行操作；同时，通过大数据分析，提供业务支持与决策。而各类数据处理，则通过云平台的各种计算服务、存储服务得以实现。  
   
     
-# 2.  设 备
+## 2.  设 备
 任何可以连接到网络的物体，如温度传感器、火灾监测设备、发动机、手环、汽车、钻井、机器人、火星车、小猫小狗、冰箱空调洗碗机等，即所谓 物联网 的“物”，Internet of Things 的“Things”。  
   
 设备可以很简单，也可以很复杂。对于简单设备，可能不能直接联入互联网，则需要通过设备网关连接；对于复杂智能设备，则可以通过物联网操作系统（以前称嵌入式操作系统）进行深度开发管理。  
@@ -41,7 +41,7 @@
 亚马逊给出的最简单设备是[亚马逊按钮](https://aws.amazon.com/iotbutton/)（记不记得此前吵了一段的你买个洗衣液送你个按钮，下次没洗衣液了就把这个按钮按一下就自动下单了的新闻），以及[一堆物联网设备](https://aws.amazon.com/iot-platform/getting-started/#kits)。  
 关于设备，有很多细节值得探讨，不再赘述。  
 
-# 3. 连 接
+## 3. 连 接
 从物理连接的角度，有大量的底层技术，包括网线、WiFi、GPRS、3G / 4G / 4.5G、Bluetooth、Zigbee、RFID 以及正吵的 NB-IoT、LiTRA 等等，此不赘述。  
 
 对于协议，一般都主流支持 MQTT, HTTP, WebSockets。具体细节可点击：  
@@ -69,9 +69,9 @@ IBM西装革履职业一些，老老实实，就叫 设备最后事件缓存 [De
 
 
     
-# 4. 平 台
+## 4. 平 台
 
-## 4.1 平台概述
+### 4.1 平台概述
 由于物联网的地域分布广、设备数量众多的特点，物联网解决方案必须借助公有云平台来实现。  
 物联网解决方案须具备如下功能：  
 >- 从设备收集数据  
@@ -90,7 +90,7 @@ IBM西装革履职业一些，老老实实，就叫 设备最后事件缓存 [De
 
 该构架中，物联网设备收集数据并与云网关交互；云网关使其它后端服务可以处理这些数据，从云网关，数据提交给其它业务应用程序或仪表板操作人员及其它展示设备。  
 
-### 4.1.1 设备连接
+#### 4.1.1 设备连接
 如何让设备安全可靠地连接到解决方案后端，是物联网解决方案所面临的巨大挑战，相比于其它系统，物联网设备有如下一些特点：  
 >- 通常是无人操作的嵌入式系统甚至是没有操作系统的设备  
 >- 可能部署到物理访问成本高昂的远程位置等各种部署场景  
@@ -109,7 +109,7 @@ IBM西装革履职业一些，老老实实，就叫 设备最后事件缓存 [De
   
 <img src="https://docs.microsoft.com/en-us/azure/iot-hub/media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg" width="500" />
  
-### 4.1.2 数据处理与分析
+#### 4.1.2 数据处理与分析
 在物联网解决方案中，数据处理与分析主要交由在公有云上的后端服务进行，包括设备数据筛选、汇总、路由到其他服务等等。后端服务主要负责如下工作：  
 >- 接收来自设备的大规模数据，并确定如何处理和存储这些数据  
 >- 必要时可以从云端向设备发送数据或指令  
@@ -132,7 +132,7 @@ IBM西装革履职业一些，老老实实，就叫 设备最后事件缓存 [De
 比如图像火灾监测设备，可以将图像火灾分析算法集成在设备芯片中，由设备芯片中的算法进行判断，仅将是否发生火灾的判定结果传输到云端。  
 而对于较复杂的图像、或者误判图像，则将图像数据及其设备端判定结果传到云端，通过机器学习，逐步改进算法，提高图像处理能力，并通过物联网对设备进行升级操作。  
 
-### 4.1.3 信息呈现和业务连接
+#### 4.1.3 信息呈现和业务连接
 信息呈现和业务连接层 用于展示和操控从设备收集的数据。它可让用户查看和分析从其设备收集的数据。 这些视图可以采用仪表板或 BI 报表的格式，以显示历史数据和/或接近实时的数据。  
 
 此层还可实现物联网解决方案与现有业务应用程序的集成，以连接企业业务流程或工作流。 例如，图像火灾监测系统，在发现监测设备故障信息后，通过与维护服务商现有的运维计划系统集成，可以预约工程师到现场进行检查。  
@@ -143,7 +143,7 @@ IBM西装革履职业一些，老老实实，就叫 设备最后事件缓存 [De
 ![MSConnectedFactory](http://azureiotclicks01.azureedge.net/demos/scenario3.task3/03.gif?b=1.0.1.10)      
 
 
-## 4.2 微软物联网解决方案构架
+### 4.2 微软物联网解决方案构架
 
 下图是微软物联网解决方案的[较详细的构架图](http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf)：  
 
@@ -160,7 +160,7 @@ IBM西装革履职业一些，老老实实，就叫 设备最后事件缓存 [De
 
 微软还给出了一些预配置解决方案和相关演示案例，有兴趣的读者可以点击如下链接，通过实际操作了解上面截图中的工厂物联网使用场景：<http://www.microsoftazureiotsuite.com/demos/connectedfactory> 。  
 
-## 4.3 亚马逊物联网解决方案构架
+### 4.3 亚马逊物联网解决方案构架
 而[亚马逊给出的构架](http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html)如下图所示：  
 ![How AWS IoT Works](http://docs.aws.amazon.com/iot/latest/developerguide/images/aws_iot_data_services.png)    
 亚马逊物联网解决方案当然强调其公有云平台 AWS，而最受其推崇的，自然是当下正热的 Serverless 构架的 AWS Lambda。  
@@ -175,7 +175,7 @@ IBM西装革履职业一些，老老实实，就叫 设备最后事件缓存 [De
 
     （看看人家，做那么大的生意，本星球/本星系第一啊，啥都谦称为 Simple 简单啥啥啥，另外，包括现在 IT 运维领域最重要的 SNMP 简单网络管理协议、电子邮件的 SMTP 简单邮件传输协议......；看看我们，动辄 皇家、擎天、至尊，汗颜啊！惭愧啊！）
 
-## 4.4 IBM 物联网解决方案构架
+### 4.4 IBM 物联网解决方案构架
 IBM 的物联网解决方案名为 [Watson IoT Platform](https://www.ibm.com/internet-of-things/platform/watson-iot-platform/)，（永远的沃森）。其构架图如下所示：  
 ![Watson IoT Platform](https://s1.51cto.com/wyfs02/M02/94/F6/wKioL1kQLkDiCexMAADU7H1wLqA301.png)   
 
@@ -188,9 +188,9 @@ IBM 物联网解决方案基于 IBM 公有云平台 Bluemix,涉及到的服务�
 IBM给出了一个简单教程，可以快速搭建物联网测试环境，可以参见<https://console.ng.bluemix.net/docs/services/IoT/getting_started/quickstart/index.html#quickstart>   
 
 
-# 5. 安 全
+## 5. 安 全
 
-## 5.1 物联网安全通述
+### 5.1 物联网安全通述
     我想用遥控器把隔壁邻居家的电视给关了！
     不知是否可以，但至少，我拿着一个空调遥控器可以到各个房间开关空调。
 
@@ -227,7 +227,7 @@ IBM给出了一个简单教程，可以快速搭建物联网测试环境，可�
 
 关于上述模型的详细信息，原文在 [Internet of Things security architecture](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-architecture)，中文可以参见 [物联网安全体系结构](https://docs.microsoft.com/zh-cn/azure/iot-hub/iot-hub-security-architecture)，这篇文档好像是人翻译的:)，中文可读。（谢谢[Sunny Deng](https://github.com/SunnyDeng)和[v-cchen](https://github.com/v-cchen)）  
 
-## 5.2 微软 Azure IoT Suite 物联网安全
+### 5.2 微软 Azure IoT Suite 物联网安全
 
 具体到微软自己的 Azure IoT Suite 物联网部署构架，则主要包括如下三个安全领域：
 >- 设备安全：在实际部署物联网设备时，保护设备安全
@@ -237,22 +237,22 @@ IBM给出了一个简单教程，可以快速搭建物联网测试环境，可�
 下图给出微软 Azure IoT 物联网安全相关概念：  
 ![Securing the Azure IoT deployment](https://docs.microsoft.com/en-us/azure/includes/media/iot-secure-your-deployment/overview.png)  
 
-### - 设备预配与验证安全
+#### - 设备预配与验证安全
 >微软 Azure IoT Suite 使用两种方法确保设备安全：
 >- 为每个设备提供唯一标识密钥（安全令牌），设备可使用该密钥与 IoT Hub 通信。
 >- 使用设备内置 X.509 证书和私钥作为一种向 IoT Hub 验证设备的方式。 此身份验证方式可确保任何时候都无法在设备外部获知设备上的私钥，从而提供更高级别的安全性。
 
-### - IoT Hub 安全令牌
+#### - IoT Hub 安全令牌
 >IoT Hub 使用安全令牌对设备和服务进行身份验证，而不在网络上发送密钥。，安全令牌的有效期和范围有限。 Azure IoT SDK 无需任何特殊配置即可自动生成令牌。 但在某些情况下，需要用户生成并直接使用安全令牌。 包括 MQTT 、AMQP 或 HTTP 应用层协议的直接使用，以及令牌服务模式的实现。
 
-### - 连接安全
+#### - 连接安全
 >使用传输层安全性 (TLS) 标准来保护 IoT 设备和 IoT 中心之间的 Internet 连接安全。 Azure IoT 支持 TLS 1.2、TLS 1.1 和 TLS 1.0
 
-### - 云安全
+#### - 云安全
 >Azure IoT Hub 为每个安全密钥定义访问控制策略。 它使用设备注册表读写、服务连接、设备连接等权限，向每个 IoT Hub 的终结点授予访问权限。
 >另外，在云端的各种服务中，如 Azure DocumentDB、Azure Stream Analytics、Azure App Service、Logic App、Azure Blob Storage等服务，都应设置响应的安全权限配置。
 
-## 5.3 亚马逊 AWS 物联网安全
+### 5.3 亚马逊 AWS 物联网安全
 亚马逊同样有一套完善的物联网安全方案。  
 所连接的每台设备必须拥有凭证才能访问消息代理或物联网设备影子服务。对于往返 AWS 物联网的所有流量，都必须通过传输层安全性 (TLS) 进行加密。必须保证设备凭证的安全，以便安全地将数据发送到消息代理。数据到达消息代理后在 AWS IoT 和其他设备或 AWS 服务之间移动时，AWS 云安全机制可为数据提供保护。  
 
@@ -268,12 +268,12 @@ AWS IoT 消息代理和设备影子服务利用传输层安全 TLS 对所有通�
 对于 MQTT，TLS 可将设备与代理之间的连接加密。AWS IoT 使用 TLS 客户端身份验证来识别设备。对于 HTTP，TLS 可将设备与代理之间的连接加密。身份验证工作委派给 AWS Signature Ver. 4 执行。  
 
 
-## 5.4 IBM Watson IoT 物联网安全
+### 5.4 IBM Watson IoT 物联网安全
 同样，IBM Watson IoT 物联网解决方案也包含完备的安全方案。  
 在 [IBM Watson IoT Platform Security](https://console.ng.bluemix.net/docs/services/IoT/reference/security/index.html#sec-index) 一文中， 首先强调了安全性的合规性、验证、授权、加密四各方面，并指出 Watson IoT Platform 以 Bluemix 为基础，而 Bluemix 基础构架的安全性与可靠性是 Watson IoT Platform 的基石。  
 
 然后，IBM 像个学生一样老老实实认认真真地道出他的安全方案。  
-<img src="https://console.ng.bluemix.net/docs/api/content/services/IoT/images/icon_iso27k1.png"/>     
+![ISO27001](https://s1.51cto.com/wyfs02/M00/95/1F/wKiom1kRxqnQlzm-AABKcBCVlzY091.png)     
 
 首先，掏出证书。指出 Watson IoT Platform 获得了 ISO 27001:2013 认证。  
 
@@ -282,6 +282,43 @@ AWS IoT 消息代理和设备影子服务利用传输层安全 TLS 对所有通�
 >- 如何实现设备与应用程序凭据安全
 >- 如何实现设备连接安全
 >- 如何防止设备数据在设备之间泄露
->- 如何防止数据在组织之间泄露
+>- 如何防止数据在组织之间泄露  
+
+上面每一方面，都有较详细的描述和示意图，此不一一列出，仅以下图设备与应用程序凭据安全为例供大家参考：  
+![IBMIoTSec](https://s3.51cto.com/wyfs02/M01/95/1E/wKioL1kRyhbA1whzAACee_pR69Y511.png)  
+
+另外，IBM 给出了安全风险管理建议，包括客户端证书、组织规划与安全策略、连接策略、黑白名单策略等。  
+
+总之，物联网安全是一个重要的、同时也是复杂的问题。不仅仅包括物联网特定的设备与构架，还牵涉到网络安全及软件开发安全的各个方面。需要在构架设计、开发、部署、运维、应用的各个方面确保安全与合规。
     
-    
+## 6. 案例与参考文档
+
+#### 亚马逊物联网相关文档及网址
+>- [亚马逊 AWS IoT 官网](https://aws.amazon.com/iot-platform/)  
+>- [亚马逊 Greengrass 官网](https://aws.amazon.com/greengrass/)  
+>- [亚马逊 Greengrass Blog](https://aws.amazon.com/cn/blogs/aws/aws-greengrass-ubiquitous-real-world-computing/)    
+>- [AWS IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html) 
+>- [AWS IoT Button](https://aws.amazon.com/iotbutton/)  
+
+#### 微软物联网相关文档及网址
+>- [微软物联网官网](https://www.microsoft.com/en-us/internet-of-things)
+>- [Azure IoT Suite 官网](https://azure.microsoft.com/en-us/suites/iot-suite/)
+>- [Microsoft Azure IoT Reference Architecture PDF](http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf) 
+>- [IoT Suite Documentation](https://docs.microsoft.com/en-us/azure/iot-suite/)
+>- [Microsoft Windows 10 IoT Core](https://developer.microsoft.com/en-us/windows/iot)
+
+#### 微软演示案例
+微软给出了几个较直观的演示案例，通过场景介绍及互动操作，可以了解不同场景的物联网应用：  
+>- [物联网工厂](http://www.microsoftazureiotsuite.com/demos/connectedfactory)  
+>- [远程监控](http://www.microsoftazureiotsuite.com/demos/remotemonitoring)  
+>- [预测性维护](http://www.microsoftazureiotsuite.com/demos/predictivemaintenance)  
+
+#### IBM 物联网相关网址
+>- [IBM IoT 官网](https://www.ibm.com/internet-of-things/)
+>- [IBM Watson IoT](https://www.ibm.com/internet-of-things/platform/watson-iot-platform/)
+>- [IBM Bluemix Docs 之 Watson IoT Platform](https://console.ng.bluemix.net/docs/services/IoT/index.html)
+>- [IBM IoT 动手演练 QuickStart](https://quickstart.internetofthings.ibmcloud.com)
+
+## 总结
+本文通过对亚马逊、微软、IBM 等公有云及物联网领域领先的解决方案的简要介绍与探讨，简单给出了物联网整体解决方案的框架，希望能让读者对物联网解决方案有一些宏观的了解。也对于我们选择国内公有云平台构建自己的物联网行业解决方案提供参考。  
+鉴于个人经验有限及文章篇幅所束，错误偏颇之处在所难免，敬请诸位网友批评指正。
