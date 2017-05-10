@@ -1,7 +1,7 @@
 ## 物联网平台概览 - Amazon, Microsoft, IBM IoT 解决方案概述
   
 >最近研究了一些物联网平台技术资料，以做选型参考。脑子里积累大量信息，便想写出来做一些普及。作为科普文章，力争通俗易懂，不确保概念严谨性。我会给考据癖者提供相关英文链接，以便深入研究。  
->>>        —— 冯立超 HiwebFrank
+>>>        —— 冯立超 HiwebFrank  
 
 
 亚马逊、微软、IBM 等云计算厂商都在布局物联网。作为平台厂商，他们各自基于自己的云计算大数据平台，提出一套完善的物联网体系构架和构建与开发工具。  
@@ -63,7 +63,7 @@
 
 这个缓存数据，其实就是一个JSON文件，而亚马逊给其取了一个好听的名字：**设备影子 [Device Shadow](https://aws.amazon.com/iot-platform/how-it-works/#shadows)**；  
 微软嘛，好吧，你叫 Shadow，我就另想一个名字吧，嗯——，**设备孪生 [Device Twins](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins)** ，（亏你想的出来）  
-IBM西装革履职业一些，老老实实，就叫 **设备最后事件缓存 [Device Last Event Cache](https://console.ng.bluemix.net/docs/services/IoT/feature_overview.html#feature_overview) **。    
+IBM西装革履职业一些，老老实实，就叫 **设备最后事件缓存 [Device Last Event Cache](https://console.ng.bluemix.net/docs/services/IoT/feature_overview.html#feature_overview)**。     
 
 这是一个很好的思路，这个影子孪生缓存设备，可以使应用系统更加高效、设置比设备更多的元数据及属性、预置设备状态、处理长时间工作流业务等等。  
 
