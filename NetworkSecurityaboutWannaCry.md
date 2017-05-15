@@ -1,4 +1,4 @@
-## 关于勒索病毒 Ransom:Win32.WannaCrypt 解决方案的最后一次说明
+## 关于勒索病毒 Ransom:Win32.WannaCrypt 解决方案的总结说明
 
 > 2017/5/12 晚，勒索软件 Ransom:Win32.WannaCrypt 大面积暴发。比病毒爆发更火的，则是各类关于此病毒的新闻、解决方法在朋友圈等社交媒体的爆发。  
 
