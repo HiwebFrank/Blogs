@@ -39,7 +39,7 @@ What is needed is an electronic payment system based on cryptographic proof inst
 # 2. Transactions
 We define an electronic coin as a chain of digital signatures. Each owner transfers the coin to the next by digitally signing a hash of the previous transaction and the public key of the next owner and adding these to the end of the coin. A payee can verify the signatures to verify the chain of ownership.<br>
 
-![1](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin1.png)<br>
+![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin1.png?raw=true)<br>
 
 The problem of course is the payee can't verify that one of the owners did not double-spend the coin. A common solution is to introduce a trusted central authority, or mint, that checks every transaction for double spending. After each transaction, the coin must be returned to the mint to issue a new coin, and only coins issued directly from the mint are trusted not to be double-spent. The problem with this solution is that the fate of the entire money system depends on the company running the mint, with every transaction having to go through them, just like a bank.<br>
 We need a way for the payee to know that the previous owners did not sign any earlier transactions. For our purposes, the earliest transaction is the one that counts, so we don't care about later attempts to double-spend. The only way to confirm the absence of a transaction is to be aware of all transactions. In the mint based model, the mint was aware of all transactions and decided which arrived first. To accomplish this without a trusted party, transactions must be publicly announced[1], and we need a system for participants to agree on a single history of the order in which they were received. The payee needs proof that at the time of each transaction, the majority of nodes agreed it was the first received.
@@ -54,7 +54,7 @@ We need a way for the payee to know that the previous owners did not sign any ea
 
 # 3. Timestamp Server
 The solution we propose begins with a timestamp server. A timestamp server works by taking a hash of a block of items to be timestamped and widely publishing the hash, such as in a newspaper or Usenet post [2-5]. The timestamp proves that the data must have existed at the time, obviously, in order to get into the hash. Each timestamp includes the previous timestamp in its hash, forming a chain, with each additional timestamp reinforcing the ones before it.<br>
-![2](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin2.png)<br>
+![2](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin2.png?raw=true)<br>
 ## 3.时间戳服务器
 我们提供的解决方案从时间戳服务器说起。一个时间戳服务器是靠对多个项目组成的区块进行哈希来得到时间戳，并在如报纸或Usenet网广泛发布该哈希值而得以工作，时间戳证明数据在那个时间点一定是存在的，明显的，为了得到哈希值，每个时间戳的哈希值中都包含之前的时间戳，从而形成一条链，每一个新增的时间戳都对其上一个进行加强。
 ## HiFrank 解读
@@ -62,7 +62,7 @@ The solution we propose begins with a timestamp server. A timestamp server works
 # 4. Proof-of-Work
 To implement a distributed timestamp server on a peer-to-peer basis, we will need to use a proofof-work system similar to Adam Back's Hashcash [6], rather than newspaper or Usenet posts. The proof-of-work involves scanning for a value that when hashed, such as with SHA-256, the hash begins with a number of zero bits. The average work required is exponential in the number of zero bits required and can be verified by executing a single hash.<br>
 For our timestamp network, we implement the proof-of-work by incrementing a nonce in the block until a value is found that gives the block's hash the required zero bits. Once the CPU effort has been expended to make it satisfy the proof-of-work, the block cannot be changed without redoing the work. As later blocks are chained after it, the work to change the block would include redoing all the blocks after it.<br>
-![3](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin3.png)<br>
+![3](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin3.png?raw=true)<br>
 The proof-of-work also solves the problem of determining representation in majority decision making. If the majority were based on one-IP-address-one-vote, it could be subverted by anyone able to allocate many IPs. Proof-of-work is essentially one-CPU-one-vote. The majority decision is represented by the longest chain, which has the greatest proof-of-work effort invested in it. If a majority of CPU power is controlled by honest nodes, the honest chain will grow the fastest and outpace any competing chains. To modify a past block, an attacker would have to redo the proof-of-work of the block and all blocks after it and then catch up with and surpass the work of the honest nodes. We will show later that the probability of a slower attacker catching up diminishes exponentially as subsequent blocks are added.<br>
 To compensate for increasing hardware speed and varying interest in running nodes over time, the proof-of-work difficulty is determined by a moving average targeting an average number of blocks per hour. If they're generated too fast, the difficulty increases.
 ## 4.工作量证明
@@ -111,7 +111,7 @@ The incentive may help encourage nodes to stay honest. If a greedy attacker is a
 # 7. Reclaiming Disk Space
 Once the latest transaction in a coin is buried under enough blocks, the spent transactions before it can be discarded to save disk space. To facilitate this without breaking the block's hash,
 transactions are hashed in a Merkle Tree [7][2][5], with only the root included in the block's hash. Old blocks can then be compacted by stubbing off branches of the tree. The interior hashes do not need to be stored.<br>
-![4](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin4.png)<br>
+![4](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin4.png?raw=true)<br>
 A block header with no transactions would be about 80 bytes. If we suppose blocks are generated every 10 minutes, 80 bytes * 6 * 24 * 365 = 4.2MB per year. With computer systems typically selling with 2GB of RAM as of 2008, and Moore's Law predicting current growth of 1.2GB per year, storage should not be a problem even if the block headers must be kept in memory.
 ## 7.回收磁盘空间
 一旦最新的交易被埋在足够的区块底下，它之前的交易可以被丢以节约磁盘空间。为了在不损毁区块哈希的情况下使这个过程更便捷，交易在Merkle树被哈希化，只有根保存着区块的哈希。旧区块可以通过截断树的分支的方式来压缩。 内部哈希不需要存储。<br>
@@ -121,7 +121,7 @@ A block header with no transactions would be about 80 bytes. If we suppose block
 # 8. Simplified Payment Verification
 It is possible to verify payments without running a full network node. A user only needs to keep a copy of the block headers of the longest proof-of-work chain, which he can get by querying network nodes until he's convinced he has the longest chain, and obtain the Merkle branch linking the transaction to the block it's timestamped in. He can't check the transaction for himself, but by linking it to a place in the chain, he can see that a network node has accepted it, and blocks added after it further confirm the network has accepted it.
 <br>
-![5](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin5.png)<br>
+![5](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin5.png?raw=true)<br>
 As such, the verification is reliable as long as honest nodes control the network, but is more vulnerable if the network is overpowered by an attacker. While network nodes can verify transactions for themselves, the simplified method can be fooled by an attacker's fabricated transactions for as long as the attacker can continue to overpower the network. One strategy to protect against this would be to accept alerts from network nodes when they detect an invalid block, prompting the user's software to download the full block and alerted transactions to confirm the inconsistency. Businesses that receive frequent payments will probably still want to run their own nodes for more independent security and quicker verification.
 
 ## 8. 简化支付验证
@@ -131,7 +131,7 @@ As such, the verification is reliable as long as honest nodes control the networ
 
 # 9. Combining and Splitting Value
 Although it would be possible to handle coins individually, it would be unwieldy to make a separate transaction for every cent in a transfer. To allow value to be split and combined, transactions contain multiple inputs and outputs. Normally there will be either a single input from a larger previous transaction or multiple inputs combining smaller amounts, and at most two outputs: one for the payment, and one returning the change, if any, back to the sender.<br>
-![6](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin6.png)<br>
+![6](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin6.png?raw=true)<br>
 It should be noted that fan-out, where a transaction depends on several transactions, and those transactions depend on many more, is not a problem here. There is never the need to extract a complete standalone copy of a transaction's history.
 ## 9.值的结合与分离
 虽然单独的处理每一笔币（交易）是可能的，但为每一笔钱单独进行交易的话就会让转账变得很笨拙。为了允许值的结合与分离，交易包含多个收入和支出。通常来说，这里既会有有来自于之前的大笔交易对资金也会有多个小笔资金汇集的组合作为输入，而最主要的两项输出：一是支付的资金，另一项是找零，如果有的话，就会退回到支付账户。<br>
@@ -140,7 +140,7 @@ It should be noted that fan-out, where a transaction depends on several transact
 
 # 10. Privacy
 The traditional banking model achieves a level of privacy by limiting access to information to the parties involved and the trusted third party. The necessity to announce all transactions publicly precludes this method, but privacy can still be maintained by breaking the flow of information in another place: by keeping public keys anonymous. The public can see that someone is sending an amount to someone else, but without information linking the transaction to anyone. This is similar to the level of information released by stock exchanges, where the time and size of individual trades, the "tape", is made public, but without telling who the parties were.<br>
-![7](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin7.png)<br>
+![7](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin7.png?raw=true)<br>
 As an additional firewall, a new key pair should be used for each transaction to keep them from being linked to a common owner. Some linking is still unavoidable with multi-input transactions, which necessarily reveal that their inputs were owned by the same owner. The risk is that if the owner of a key is revealed, linking could reveal other transactions that belonged to the same owner.
 ## 10.隐私
 传统的银行模型通过对相关方和可行第三方限制信息实现了一定程度的隐私保护。公开宣布所有交易的方式排除了这种方法的必要性，但通过打破另一个地方的信息流依然可以保证一定程度的隐私。通过保持公钥匿名，公众可以看到某人正在向某个其他人发送交易，却没有将交易链接到任何人的信息。这和证券交易所发布的信息水平很类似，储存时间和每个交易的大小的“磁带”，是公开的，但不会告诉你这些相关方是谁。<br>
@@ -155,19 +155,19 @@ The probability of an attacker catching up from a given deficit is analogous to 
 >*q* = probability the attacker finds the next block<br>
 >*q<sub>z</sub>* = probability the attacker will ever catch up from z blocks behind
 <br>
-![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin8.png)<br>
+![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin81.png?raw=true)<br>
 Given our assumption that *p* > *q*, the probability drops exponentially as the number of blocks the attacker has to catch up with increases. With the odds against him, if he doesn't make a lucky lunge forward early on, his chances become vanishingly small as he falls further behind.<br>
 We now consider how long the recipient of a new transaction needs to wait before being
 sufficiently certain the sender can't change the transaction. We assume the sender is an attacker who wants to make the recipient believe he paid him for a while, then switch it to pay back to himself after some time has passed. The receiver will be alerted when that happens, but the sender hopes it will be too late.<br>
 The receiver generates a new key pair and gives the public key to the sender shortly before signing. This prevents the sender from preparing a chain of blocks ahead of time by working on it continuously until he is lucky enough to get far enough ahead, then executing the transaction at that moment. Once the transaction is sent, the dishonest sender starts working in secret on a parallel chain containing an alternate version of his transaction. <br>
 The recipient waits until the transaction has been added to a block and z blocks have been linked after it. He doesn't know the exact amount of progress the attacker has made, but assuming the honest blocks took the average expected time per block, the attacker's potential progress will be a Poisson distribution with expected value:<br>
-![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin9.png)<br>
+![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin82.png?raw=true)<br>
 To get the probability the attacker could still catch up now, we multiply the Poisson density for each amount of progress he could have made by the probability he could catch up from that point:
 <br>
-![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin10.png)<br>
+![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin83.png?raw=true)<br>
 Rearranging to avoid summing the infinite tail of the distribution...
 <br>
-![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin11.png)<br>
+![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin84.png?raw=true)<br>
 Converting to C code...<br>
 
 ```
@@ -236,16 +236,16 @@ q=0.45 z=340
 >*q<sub>z</sub>*= 攻击者从落后z个区块赶上诚实的链条的概率
 <br>
 
-![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin8.png)<br>
+![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin81.png?raw=true)<br>
 就算我们假设 *p* > *q*, 随着攻击者必须赶上的数量增加，概率呈指数下降。如果他没有能够在早期进行一次幸运的冲刺，那么随着他会落后更远，他的机会就会变得越来越小。
 我们现在考虑新交易的收款者需要等待多长时间才能充分确定付款者无法篡改交易。我们假设支付者是一个希望收款人在一定时间范围内相信他付了钱的攻击者，他会经过一段时间后，将交易返还给自己。收款人那时会收到警告，但支付者希望那时就太晚了。
 收款者生成一个新的钥匙对，然后并在签署前不久将公钥提供给付款人。这防止了付款人通过持续工作，直到他足够幸运，远远超前准备一连串的区块，再在这个时候执行交易。一旦交易发出，这个不诚实的付款者就对一个包含其交易的备用版本的并行链进行工作。
 收件人开始等待，直到交易已添加到块并且有z块已经被添加在它后面。他不知道攻击者取得的确切进展，但假设诚实的区块花费了每块的平均预期时间，攻击者的潜在进展将是具有预期值的泊松分布：<br>
-![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin9.png)<br>
+![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin82.png?raw=true)<br>
 为了得到攻击者依然可以赶上对可能性，我们将他本可以取得的每一个进展量的泊松密度乘以他从那一点赶上来的概率：<br>
-![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin10.png)<br>
+![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin83.png?raw=true)<br>
 重新排列，以避免总结分布的无限尾...<br>
-![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin11.png)<br>
+![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/BitCoin84.png?raw=true)<br>
 转换为C代码......
 
 ```
