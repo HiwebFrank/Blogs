@@ -388,8 +388,9 @@ We have proposed a system for electronic transactions without relying on trust. 
 >在我们将“区块链作为核心技术自主创新的重要突破口”的新背景下，我们再次认真研读这篇论文，不忘初心砥砺前行，在底层技术基础上实现突破创新。<br>
 >本译稿只求达意，不拘严谨，个人解读更是随意揣度，有失偏颇，仅供参考。建议充分阅读原文得其真趣。<br>
 >码字不易，解读劳心。如果本文对您有所收获，欢迎转发，但请注明出处。也可以扫码请作者喝杯咖啡 :)
-<br>
-![ ](https://github.com/HiwebFrank/Blogs/blob/master/imgs/HiRunner.jpg?raw=true)<br>
+<div align="right">
+<img src="https://github.com/HiwebFrank/Blogs/blob/master/imgs/HiRunner.jpg?raw=true" height="150",width="150"/>
+</div>
 
 
 
