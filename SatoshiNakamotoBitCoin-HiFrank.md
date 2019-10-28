@@ -384,10 +384,14 @@ We have proposed a system for electronic transactions without relying on trust. 
 ## 12.结论
 本文提出了一种不依赖于信任的电子交易系统。我们从使用数字签名的常规货币框架开始，它提供了强有力的所有权控制，但其不能防止双重支付，所以并不完整。为解决此问题，我们提出了一种用**工作量证明**来记录交易的公开历史的点对点网络，如果诚实节点控制大部分CPU算力，从计算量上使得攻击者改变数据很快变得不切实际。该网络因其非结构化的简洁而非常健壮。节点只需极少的协调即可一起工作。由于消息不会路由到任何特定的地方，只需要尽力而为，所以它们不需要被识别。节点可以随时离开网络或重新加入，通过接受工作量证明链作为它们离开时产生的交易历史的证明。通过CPU算力投票，通过扩展它们来表达他们对有效块的接受，并通过拒用来拒绝无效块。任何所需的规则和激励措施都可以通过这种共识机制来实施。
 ## HiFrank 跋
->距离中本聪 2008 年发布此论文，已经过去十一年了。2009 年他发布了首个比特币软件 BitCoin，正式启动了比特币金融系统。此后，数字货币跌宕起伏，搅动着整个世界的金融体系，并使区块链技术扩展到各个领域。<br>
->在我们将“区块链作为核心技术自主创新的重要突破口”的新背景下，我们再次认真研读这篇论文，不忘初心砥砺前行，在底层技术基础上实现突破创新。<br>
->本译稿只求达意，不拘严谨，个人解读更是随意揣度，有失偏颇，仅供参考。建议充分阅读原文得其真趣。<br>
->码字不易，解读劳心。如果本文对您有所收获，欢迎转发，但请注明出处。也可以扫码请作者喝杯咖啡 :)
+>- 距离中本聪 2008 年发布此论文，已经过去十一年了。2009 年他发布了首个比特币软件 BitCoin，正式启动了比特币金融系统。此后，数字货币跌宕起伏，搅动着整个世界的金融体系，并使区块链技术扩展到各个领域。<br>
+>- 在我们将“区块链作为核心技术自主创新的重要突破口”的新背景下，我们再次认真研读这篇论文，不忘初心砥砺前行，在底层技术基础上实现突破创新。<br>
+>- 本译稿只求达意，不拘严谨，个人解读更是随意揣度，有失偏颇，仅供参考。建议充分阅读原文得其真趣。<br>
+>- 本文同时在如下位置发布，以方便大家阅读：
+>>- https://github.com/HiwebFrank/Blogs/blob/master/SatoshiNakamotoBitCoin-HiFrank.md
+>>- https://blog.csdn.net/franklfeng/article/details/102791408
+>>-  HiMarathon 微信公众号
+>- 码字不易，解读劳心。如果本文对您有所收获，欢迎转发，但请注明出处。也可以扫码请作者喝杯咖啡 :)
 <div align="right">
 <img src="https://github.com/HiwebFrank/Blogs/blob/master/imgs/HiRunner.jpg?raw=true" height="150",width="150"/>
 </div>
@@ -403,3 +407,7 @@ We have proposed a system for electronic transactions without relying on trust. 
 6. A. Back, "Hashcash - a denial of service counter-measure," http://www.hashcash.org/papers/hashcash.pdf, 2002.<br>
 7. R.C. Merkle, "Protocols for public key cryptosystems," In *Proc. 1980 Symposium on Security and Privacy*, IEEE Computer Society, pages 122-133, April 1980.<br>
 8. W. Feller, "An introduction to probability theory and its applications," 1957.9
+# 译者致谢
+> 在本文翻译的过程中，参考了 *夜读春秋* 及 *柏拉图的双斜杠* 的博文，在此致谢。<br>
+> 1.中本聪比特币论文, 夜读春秋， https://blog.csdn.net/alading2009/article/details/78768309
+> 2.  比特币创世论文《Bitcoin: A Peer-to-Peer Electronic Cash System》研读，柏拉图的双斜杠，https://blog.csdn.net/qq_27467365/article/details/81569962
