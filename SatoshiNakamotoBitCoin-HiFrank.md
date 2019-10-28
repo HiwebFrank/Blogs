@@ -409,5 +409,5 @@ We have proposed a system for electronic transactions without relying on trust. 
 8. W. Feller, "An introduction to probability theory and its applications," 1957.9
 # 译者致谢
 > 在本文翻译的过程中，参考了 *夜读春秋* 及 *柏拉图的双斜杠* 的博文，在此致谢。<br>
-> 1.中本聪比特币论文, 夜读春秋， https://blog.csdn.net/alading2009/article/details/78768309
+> 1. 中本聪比特币论文, 夜读春秋， https://blog.csdn.net/alading2009/article/details/78768309 <br>
 > 2.  比特币创世论文《Bitcoin: A Peer-to-Peer Electronic Cash System》研读，柏拉图的双斜杠，https://blog.csdn.net/qq_27467365/article/details/81569962
