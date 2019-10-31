@@ -390,7 +390,7 @@ We have proposed a system for electronic transactions without relying on trust. 
 >- 本文同时在如下位置发布，以方便大家阅读：
 >>- https://github.com/HiwebFrank/Blogs/blob/master/SatoshiNakamotoBitCoin-HiFrank.md
 >>- https://blog.csdn.net/franklfeng/article/details/102791408
->>- https://mp.weixin.qq.com/s/m7EQvcv17t_jN4uIkcUXxw
+>>- https://mp.weixin.qq.com/s?__biz=MzU5NDgyODUyOQ==&mid=2247483757&idx=1&sn=244d68cc912ee2db3207bb7a18a40248
 >- 码字不易，解读劳心。如果本文对您有所收获，欢迎转发，但请注明出处。也可以扫码请作者喝杯咖啡 :)
 <div align="right">
 <img src="https://github.com/HiwebFrank/Blogs/blob/master/imgs/HiRunner.jpg?raw=true" height="150",width="150"/>
